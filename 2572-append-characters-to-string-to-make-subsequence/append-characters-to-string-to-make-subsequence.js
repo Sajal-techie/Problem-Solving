@@ -4,15 +4,11 @@
  * @return {number}
  */
 var appendCharacters = function(s, t) {
-    let i =0
-    let j = 0
-    while (i< s.length && j < t.length){
-        if (s[i] == t[j]){
-            i++
-            j++
-        }else{
-            i++
+    let index = 0
+    for (let i =0; i< s.length;i++){
+        if (s[i] == t[index]){
+            index++
         }
     }
-    return t.length - j
+    return t.length - index
 };
