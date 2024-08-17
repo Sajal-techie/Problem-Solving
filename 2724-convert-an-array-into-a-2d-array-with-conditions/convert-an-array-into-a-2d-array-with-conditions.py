@@ -8,5 +8,4 @@ class Solution:
                     break
             else:
                 res.append([nums[i]])
-
         return res
