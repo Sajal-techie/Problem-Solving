@@ -1,41 +1,24 @@
-
-class Trie:
-    def __init__(self):
-        self.child = {}
-        self.is_end = False
-
-
 class Solution:
-    def __init__(self):
-        self.trie = Trie()
-        self.longest = 0
-    
-    def insert_element(self, word):
-        node = self.trie
-        for char in word:
-            if char not in node.child:
-                node.child[char] = Trie()
-            node = node.child[char] 
-        node.is_end = True
-    
-    def commonPrefix(self, arr):
-        for element in arr:
-            curr = 0
-            node = self.trie
-            for word in str(element):
-                if word in node.child:
-                    curr += 1
-                    node = node.child[word]
-
-                    if self.longest < curr:
-                        self.longest = curr
-                else:
-                    break  
-
     def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
-        for word in arr1:
-            self.insert_element(str(word))
+        prefix_map = {}
         
-        self.commonPrefix(arr2)
-        return self.longest
-    
+        # Step 1: Build the prefix map for arr1
+        for num in arr1:
+            str_num = str(num)
+            prefix = ""
+            for ch in str_num:
+                prefix += ch
+                prefix_map[prefix] = prefix_map.get(prefix, 0) + 1
+        
+        max_length = 0
+        
+        # Step 2: Check for common prefixes in arr2
+        for num in arr2:
+            str_num = str(num)
+            prefix = ""
+            for ch in str_num:
+                prefix += ch
+                if prefix in prefix_map:
+                    max_length = max(max_length, len(prefix))
+        
+        return max_length
