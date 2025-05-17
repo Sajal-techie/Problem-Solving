@@ -16,17 +16,17 @@ class Solution:
                     j += 1
                 else:
                     dr = "D"
-            elif dr == "D":
+            if dr == "D":
                 if i+1 < n and (i+1, j) not in visited:
                     i += 1
                 else:
                     dr = "L"
-            elif dr == "L":
+            if dr == "L":
                 if j > 0 and (i, j-1) not in visited:
                     j -= 1
                 else:
                     dr = "U"
-            elif dr == "U":
+            if dr == "U":
                 if i > 0 and (i-1, j) not in visited:
                     i -= 1
                 else:
