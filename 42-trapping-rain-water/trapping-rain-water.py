@@ -16,4 +16,3 @@ class Solution:
                 water += rightMax - height[right]
             
         return water
-
