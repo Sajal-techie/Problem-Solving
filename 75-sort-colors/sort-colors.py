@@ -5,13 +5,13 @@ class Solution:
         """
         n = len(nums) - 1
         l, r, i = 0, n, 0
-        while i <= n:
+        while i <= r:
 
             if nums[i] == 0:
                 nums[i], nums[l] = nums[l], nums[i]
                 l += 1
                 i += 1
-            elif nums[i] == 2 and i < r:
+            elif nums[i] == 2:
                 nums[i], nums[r] = nums[r], nums[i]
                 r -= 1
             else:
