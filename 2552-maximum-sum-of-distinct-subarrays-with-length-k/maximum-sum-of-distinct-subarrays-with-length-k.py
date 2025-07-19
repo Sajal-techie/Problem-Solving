@@ -14,10 +14,10 @@ class Solution:
                     curr -= nums[l]
                     l += 1
             else:
-                while nums[i] in elem:
-                    elem.remove(nums[l])
+                while nums[l] != nums[i]:
                     curr -= nums[l]
+                    elem.remove(nums[l])
                     l += 1
-                elem.add(nums[i])
-                curr += nums[i]
+                
+                l += 1
         return max_sum
