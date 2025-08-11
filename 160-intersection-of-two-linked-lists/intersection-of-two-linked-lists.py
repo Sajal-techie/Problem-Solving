@@ -6,22 +6,36 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        set1 = set()
-        set2 = set()
+        n1 = 1
+        n2 = 1
         curr1 = headA
         curr2 = headB
-        while curr1 or curr2:
-            if curr1:
-                set1.add(curr1)
-            if curr2:
-                set2.add(curr2)
-            if curr1 in set2:
-                return curr1
-            if curr2 in set1:
-                return curr2
-            if curr1:
-                curr1 = curr1.next
-            if curr2:
-                curr2 = curr2.next
-        return None
-        
+        while curr1.next:
+            curr1 = curr1.next
+            n1 += 1
+        while curr2.next:
+            curr2 = curr2.next
+            n2 += 1
+        print(curr1.val, curr2.val, n1, n2)
+        if curr1 and curr2 and curr1 != curr2:
+            return None
+        if n1 > n2:
+            curr = headA
+            other = headB
+            l = n1
+            s = n2
+        else:
+            curr = headB
+            other = headA
+            l = n2
+            s = n1
+        while l != s and curr:
+            curr = curr.next
+            l -= 1
+        print(curr.val, other.val)
+        while curr and other:
+            if curr == other:
+                return curr
+            curr = curr.next
+            other = other.next
+        print("hai")
