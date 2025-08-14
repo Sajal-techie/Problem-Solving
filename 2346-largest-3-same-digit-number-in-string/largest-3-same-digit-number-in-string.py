@@ -1,24 +1,16 @@
 class Solution:
     def largestGoodInteger(self, num: str) -> str:
-        if '999' in num:
-            return "999"
-        elif '888' in num:
-            return '888'
-        elif '777' in num:
-            return '777'
-        elif '666' in num:
-            return '666'
-        elif '555' in num:
-            return '555'
-        elif '444' in num:
-            return '444'
-        elif '333' in num:
-            return '333'
-        elif '222' in num:
-            return '222'
-        elif '111' in num:
-            return '111'
-        elif '000' in num:
-            return '000'
-        else:
-            return ''
+        res = -1
+        for i in range(1, len(num)-1):
+            v1 = num[i]
+            v2 = num[i-1]
+            v3 = num[i+1]
+            if v1 == v2 == v3:
+                res = max(res, int(v1*3))
+                if res == 999:
+                    break
+        if res == 0:
+            return "000"
+        if res < 0:
+            return ""
+        return str(res)
