@@ -1,16 +1,19 @@
 class SubrectangleQueries:
 
     def __init__(self, rectangle: List[List[int]]):
-        self.list = rectangle
+        self.queries = []
+        self.rectangle = rectangle
 
     def updateSubrectangle(self, row1: int, col1: int, row2: int, col2: int, newValue: int) -> None:
-        for i in range(len(self.list)):
-            for j in range(len(self.list[i])):
-                if i >= row1 and i <= row2 and j >= col1 and j <= col2:
-                    self.list[i][j] = newValue
+        self.queries.append((row1, col1, row2, col2, newValue))
 
     def getValue(self, row: int, col: int) -> int:
-        return self.list[row][col]
+        for i in range(len(self.queries) - 1, -1, -1):
+            r1, c1, r2, c2, newValue = self.queries[i]
+            if r1 <= row <= r2 and c1 <= col <= c2:
+                return newValue
+        return self.rectangle[row][col]
+
 
 # Your SubrectangleQueries object will be instantiated and called as such:
 # obj = SubrectangleQueries(rectangle)
